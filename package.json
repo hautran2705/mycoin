@@ -1,0 +1,33 @@
+{
+  "name": "mycoin",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "node_1": "nodemon app.js 3001 http://localhost:3001",
+    "node_2": "nodemon app.js 3002 http://localhost:3002",
+    "node_3": "nodemon app.js 3003 http://localhost:3003",
+    "node_4": "nodemon app.js 3004 http://localhost:3004",
+    "node_5": "nodemon app.js 3005 http://localhost:3005"
+  },
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "crypto-js": "^3.1.6",
+    "express": "^4.17.1",
+    "express-async-errors": "^3.1.1",
+    "hbs": "^4.1.2",
+    "jsonwebtoken": "^8.5.1",
+    "knex": "^0.95.4",
+    "morgan": "^1.10.0",
+    "mysql2": "^2.2.5",
+    "nodemon": "^2.0.7",
+    "request": "^2.88.2",
+    "request-promise": "^4.2.6",
+    "sha256": "^0.2.0",
+    "uuid": "^8.3.2",
+    "ws": "^1.1.5"
+  },
+  "engines": {
+    "node": ">=4.3.2"
+  }
+}
