@@ -49,13 +49,13 @@ dbmodel.getall().then( data => {
         for (t of b.transactions) {
             block.transactions.push(t)
         }
-        console.log(block);
+        //console.log(block);
         backup.chain.push(block);
     }
 })
 
 
-
+const {broadcastAll} = require('./ws');
 const auth = require('./middlewares/auth.mdw');
 
 app.get('/user/getamount', auth, async function(req, res) {
@@ -117,6 +117,8 @@ app.post('/receive-new-block', function(req, res) {
     if (correctHash && correctIndex) {
         dbmodel.addToData(newBlock);
         backup.chain.push(newBlock);
+        const msgSend = JSON.stringify(newBlock);
+        broadcastAll(msgSend);
         res.json({
             newBlock: true
         });
@@ -189,6 +191,7 @@ app.get('/chain', auth, function(req, res) {
         chain: backup.chain,
         authenticated: true
     }
+    
     res.json(data);
 });
 
@@ -208,3 +211,4 @@ app.use(function (err, req, res, next) {
         error_message: 'Something broke!'
     });
 })
+

@@ -80,6 +80,33 @@
       const parts = value.split(`; ${name}=`);
       if (parts.length === 2) return parts.pop().split(';').shift();
     }
+
+    function setupWS(){
+      const ws = new WebSocket('ws://localhost:4000');
+      ws.onopen = function() {
+        console.log('open');
+        ws.send('hello');
+      }
+
+      ws.onmessage = function(e) {
+        const c = JSON.parse(e.data); 
+        const card = `<div class="col-md-4">
+                                    <div class="card mb-4 shadow-sm">
+                                      <div class="card-header"><h3>Block ${c.index}</h3></div>
+                                      <div class="card-body">
+                                        <div class="card-text">Time stamp: ${c.timestamp}</div>
+                                        <div class="card-text">Nonce: ${c.nonce}</div>
+                                        <div class="card-text">Hash: ${c.hash}</div>
+                                        <div class="card-text">Previous Hash: ${c.previousBlockHash}</div>
+                                      </div>
+                                    </div>
+                                  </div>`;
+                    $('#showblock').prepend(card);
+      }
+    }
+
+    setupWS();
+
     var publickey = '';
     const accessToken = getCookie('accessToken');
     window.onload = function () {
