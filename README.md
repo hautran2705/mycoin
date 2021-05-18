@@ -1,6 +1,7 @@
 # mycoin
 
 link demo: https://youtu.be/J1nZ6CAulOI
+link github: https://github.com/hautran2705/mycoin
 
 Hướng dẫn:
 1. Tạo wallet bằng một nút bấm hệ thống sẽ tạo ra một private key.
